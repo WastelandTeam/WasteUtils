@@ -1,0 +1,20 @@
+message:
+  lang: zh-cn.yml
+plugin:
+  matchmaking:
+    rank:
+      #启用排位功能
+      #如果只是竞技,可以关闭此功能
+      enabled: true
+      #最高分数
+      #如果你需要指定一个最高分，将这个参数改成最高分数字
+      maxpoints: 10000
+    queue:
+      waiting:
+        #最大队列匹配时长
+        #超过多少秒未匹配成功就执行什么操作
+        maxWaitTime: 180
+        #超时后是否踢出匹配队列
+        forceKick: true
+        #超时后是否将玩家强制安排在一个游戏房间
+        forceJoin: false
