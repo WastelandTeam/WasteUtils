@@ -9,6 +9,10 @@ public class Main extends JavaPlugin {
         this.saveDefaultConfig();
         this.reloadConfig();
         Bukkit.getConsoleSender().sendMessage("§3WasteUtils§f >>§ePlugin was loaded. Hello from WasteUtils V0.0.1 Demo!");
+        Boolean isDebugging = this.getConfig().getBoolean("debug");
+        if (isDebugging = Boolean.TRUE) {
+            Bukkit.getConsoleSender().sendMessage("§3WasteUtils§f >>§eDebugger was enabled.");
+        }
     }
 
 
