@@ -18,3 +18,10 @@ plugin:
         forceKick: true
         #超时后是否将玩家强制安排在一个游戏房间
         forceJoin: false
+  log:
+    #日志往控制台打印的关键词，默认为WasteUtils2233
+    keyword: WasteUtils2233
+    server:
+      #记录服务器指令执行操作
+      command: true
+      #记录
