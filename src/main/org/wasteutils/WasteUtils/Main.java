@@ -6,6 +6,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.wasteutils.WasteUtils.Listeners.LoggingListener;
 import org.wasteutils.WasteUtils.commands.CommandMatchMaking;
+import org.wasteutils.WasteUtils.commands.CommandReload;
 
 import java.io.File;
 
@@ -43,7 +44,7 @@ public class Main extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage("§3WasteUtils§f >>§e Plugin was Enabled.");
         getServer().getPluginManager().registerEvents(new LoggingListener(), this);
         this.getCommand("matchmaking").setExecutor(new CommandMatchMaking());
-        YamlConfiguration lang = loadConfiguration(new File("lang/" + this.getConfig().getString("message.lang")));
+        this.getCommand("wureload").setExecutor(new CommandReload());
     }
 
     @Override
