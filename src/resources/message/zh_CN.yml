@@ -1,6 +1,7 @@
 plugin.prefix: "§3WasteUtils§f >> "
 plugin.reload: "已重新加载"
 plugin.nopermission: "没有权限。"
+plugin.notfound: "指令不存在。"
 game.matchmaking.failed: "匹配超时，请尝试重新匹配"
 game.matchmaking.success: "匹配成功"
 game.matchmaking.start: "开始匹配...请耐心等待"

@@ -5,7 +5,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.wasteutils.WasteUtils.Listeners.LoggingListener;
 import org.wasteutils.WasteUtils.commands.CommandMatchMaking;
-import org.wasteutils.WasteUtils.commands.CommandReload;
+import org.wasteutils.WasteUtils.commands.CommandWasteUtils;
 
 import java.io.File;
 
@@ -43,7 +43,7 @@ public class Main extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage("§3WasteUtils§f >>§e Plugin was Enabled.");
         getServer().getPluginManager().registerEvents(new LoggingListener(), this);
         this.getCommand("matchmaking").setExecutor(new CommandMatchMaking());
-        this.getCommand("wureload").setExecutor(new CommandReload());
+        this.getCommand("wasteutils").setExecutor(new CommandWasteUtils());
     }
 
     @Override
