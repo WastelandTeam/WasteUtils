@@ -5,7 +5,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.wasteutils.WasteUtils.Main;
 
-import java.util.Objects;
 
 public class CommandReload implements CommandExecutor {
     private Main plugin;
@@ -13,11 +12,11 @@ public class CommandReload implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] strings) {
         if (sender.hasPermission("wasteutils.reload")){
-            sender.sendMessage(Objects.requireNonNull(this.plugin.lang.getString("plugin.reload")));
+            sender.sendMessage(this.plugin.addPrefix(this.plugin.lang.getString("plugin.reload")));
             this.plugin.loadConfig();
             return true;
         } else {
-            sender.sendMessage(Objects.requireNonNull(this.plugin.lang.getString("plugin.nopermission")));
+            sender.sendMessage(this.plugin.addPrefix(this.plugin.lang.getString("plugin.nopermission")));
             return false;
         }
     }
