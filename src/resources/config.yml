@@ -1,4 +1,7 @@
+#调试模式
+debug: false
 message:
+  #选定在服务器内插件的输出展示什么语言
   lang: zh-cn.yml
 plugin:
   matchmaking:
@@ -7,8 +10,8 @@ plugin:
       #如果只是竞技,可以关闭此功能
       enabled: true
       #最高分数
-      #如果你需要指定一个最高分，将这个参数改成最高分数字
-      maxpoints: 10000
+      #如果你需要指定一个最高分，将这个参数改成最高分数
+      maxPoints: 10000
     queue:
       waiting:
         #最大队列匹配时长
@@ -18,10 +21,18 @@ plugin:
         forceKick: true
         #超时后是否将玩家强制安排在一个游戏房间
         forceJoin: false
+    behaviour: #加分/扣分行为
+      add:
+        #击杀人机加分
+        killBot: 1
+        #击杀玩家加分
+        killPlayer: 2
+        #撤离加分
+        evacuate: 5
+      minus:
+        #被击杀减五分，此处不是加分的意思
+        death: 5
   log:
-    #日志往控制台打印的关键词，默认为WasteUtils2233
-    keyword: WasteUtils2233
     server:
       #记录服务器指令执行操作
       command: true
-      #记录

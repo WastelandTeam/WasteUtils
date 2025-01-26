@@ -14,15 +14,14 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.server.ServerCommandEvent;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.logging.Level;
 
 
 public class LoggingListener implements Listener {
     @EventHandler
-    public void serverCommandListener(@NotNull ServerCommandEvent e) {
+    public void serverCommandListener(ServerCommandEvent e) {
         String command = e.getCommand();
-        Bukkit.getLogger().log(Level.INFO, "WasteUtils >> Command executed from CONSOLE: " + command);
+        Bukkit.getLogger().log(Level.INFO, "§3WasteUtils §f>> Command executed from CONSOLE: " + command);
     }
 }
