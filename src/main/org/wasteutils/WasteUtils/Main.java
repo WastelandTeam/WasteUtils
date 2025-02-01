@@ -4,7 +4,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.wasteutils.WasteUtils.Listeners.LoggingListener;
-import org.wasteutils.WasteUtils.commands.CommandMatchMaking;
 import org.wasteutils.WasteUtils.commands.CommandWasteUtils;
 
 import java.io.File;
@@ -29,6 +28,9 @@ public class Main extends JavaPlugin {
         }
 
     }
+    public void donotdoanything(){
+        String nothing = "donotdoanything";
+    }
 
     public void loadConfig(){
         this.reloadConfig();
@@ -42,7 +44,6 @@ public class Main extends JavaPlugin {
     public void onEnable() {
         Bukkit.getConsoleSender().sendMessage("§3WasteUtils§f >>§e Plugin was Enabled.");
         getServer().getPluginManager().registerEvents(new LoggingListener(), this);
-        this.getCommand("matchmaking").setExecutor(new CommandMatchMaking());
         this.getCommand("wasteutils").setExecutor(new CommandWasteUtils());
     }
 

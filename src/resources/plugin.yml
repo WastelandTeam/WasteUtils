@@ -1,9 +1,22 @@
 name: WasteUtils
+prefix: WU
 main: org.wasteutils.WasteUtils.Main
 version: 0.0.1 Demo
 api-version: 1.19
-authors: [ xiaodi001,mao_mao_shen,xianyu1145 ]
+authors: [xiaodi001, mao_mao_shen, xianyu1145]
 commands:
   test:
     description: to test that make sure WasteUtils is working
-    usage: /test
+    usage: "/test"
+  wasteutils:
+    description: WasteUtils management
+    usage: "/wasteutils [subcommands]"
+    aliases:
+      - "wu"
+permissions:
+  wasteutils.mail:
+    description: "Allow using mails."
+    default: true
+  wasteutils.reload:
+    description: "Allow reload."
+    default: op
