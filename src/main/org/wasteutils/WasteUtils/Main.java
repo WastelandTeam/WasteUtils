@@ -4,6 +4,7 @@ package org.wasteutils.WasteUtils;
 Mao_mao_shen，你气死我了
 xianyu1145, 别jb催了，再催我就给你玛莎拉
 全体玩家们好，我们还在蒸
+From commit-8883419:忘记注册了，嘿嘿，顺手的事
 */
 
 
@@ -12,6 +13,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.wasteutils.WasteUtils.Listeners.LoggingListener;
+import org.wasteutils.WasteUtils.commands.CommandWasteUtils;
 
 import java.io.File;
 
@@ -55,6 +57,7 @@ public class Main extends JavaPlugin {
         if (!langFile.exists()) {
             saveResource("message" + File.separator + langFileName, false);
         }
+        this.getCommand("wasteutils").setExecutor(new CommandWasteUtils(this));
         this.lang = YamlConfiguration.loadConfiguration(langFile);
     }
 
