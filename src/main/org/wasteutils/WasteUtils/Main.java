@@ -9,8 +9,7 @@ From commit-8883419:忘记注册了，嘿嘿，顺手的事
 
 
 import org.bukkit.Bukkit;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
+
 import org.bukkit.plugin.java.JavaPlugin;
 import org.wasteutils.WasteUtils.Listeners.LoggingListener;
 import org.wasteutils.WasteUtils.commands.CommandWasteUtils;
@@ -52,13 +51,9 @@ public class Main extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage("§3WasteUtils§f >>§e Plugin was Enabled.");
         getServer().getPluginManager().registerEvents(new LoggingListener(this), this);
 
-        String langFileName = getConfig().getString("message.lang") + ".yml";
-        File langFile = new File(getDataFolder() + File.separator + "message", langFileName);
-        if (!langFile.exists()) {
-            saveResource("message" + File.separator + langFileName, false);
-        }
+
         this.getCommand("wasteutils").setExecutor(new CommandWasteUtils(this));
-        this.lang = YamlConfiguration.loadConfiguration(langFile);
+
     }
 
     @Override
