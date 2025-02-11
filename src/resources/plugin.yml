@@ -3,12 +3,10 @@ main: org.wasteutils.WasteUtils.Main
 version: 0.0.1 Demo
 api-version: 1.20
 authors: [ xiaodi001,mao_mao_shen,xianyu1145 ]
-softdepend:
-  - Vault
 commands:
   test:
     description: to test that make sure WasteUtils is working
-    usage: "Hello world!"
+    usage: "/test，对了 感谢mao_mao_shen和xianyu_1145（他俩啥也没干，单纯想感谢）"
   wasteutils:
     description: WasteUtils Admin setting
     aliases: [ wu, waste ]

@@ -2,7 +2,6 @@ package org.wasteutils.WasteUtils;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import java.io.File;
 
 public class Shortcuts {
     public FileConfiguration loadLang(){

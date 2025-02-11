@@ -20,20 +20,26 @@ public class CommandWasteUtils implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] strings) {
         if (command.getName().equalsIgnoreCase("wasteutils") && strings.length > 0) {
+
             if (strings[0].equalsIgnoreCase("reload")) {
+
                 if (sender.hasPermission("wasteutils.reload")){
+
                     sender.sendMessage(this.plugin.addPrefix(this.plugin.lang.getString("plugin.reload")));
                     this.plugin.loadConfig();
                     return true;
                 } else {
+
                     sender.sendMessage(this.plugin.addPrefix(this.plugin.lang.getString("plugin.nopermission")));
                     return false;
                 }
             } else {
+
                 sender.sendMessage(this.plugin.addPrefix(this.plugin.lang.getString("plugin.notfound")));
                 return false;
             }
         } else {
+
             return false;
         }
     }
