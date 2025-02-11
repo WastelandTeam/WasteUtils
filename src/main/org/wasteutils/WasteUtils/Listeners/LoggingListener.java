@@ -29,7 +29,9 @@ public class LoggingListener implements Listener {
     }
     @EventHandler
     public void serverCommandListener(ServerCommandEvent e) {
-        String command = e.getCommand();
-        getLogger().log(Level.INFO, this.plugin.addPrefix(this.plugin.lang.getString("log.command")) + command);
+        if (this.plugin.getConfig().getBoolean("debug") == Boolean.TRUE) {
+            String command = e.getCommand();
+            getLogger().log(Level.INFO, this.plugin.addPrefix(this.plugin.lang.getString("log.command")) + command);
+        }
     }
 }
