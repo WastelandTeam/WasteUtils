@@ -10,7 +10,6 @@ import org.wasteutils.WasteUtils.Main;
 
 
 public class CommandWasteUtils {
-
     public static Boolean CmdHandler(CommandSender sender, Command command, String s, String[] strings, Main plugin) {
         if (command.getName().equalsIgnoreCase("wasteutils") && strings.length > 0) {
             if (strings[0].equalsIgnoreCase("reload")) {
