@@ -1,4 +1,4 @@
-package org.wasteutils.WasteUtils.commands;
+package org.wasteutils.WasteUtils.Comands;
 
 /*
 Commands manager
@@ -26,10 +26,12 @@ public class CommandManager implements CommandExecutor {
         } else if (command.getName().equalsIgnoreCase("economies")) {
             if (this.plugin.isVaultInstalled == Boolean.TRUE) {
                 return CommandEconomies.CmdHandler(commandSender, command, s, strings, this.plugin);
+            } else {
+                commandSender.sendMessage(this.plugin.addPrefix("Please install Vault before executing this main command!"));
+                return false;
             }
         } else {
             throw new CommandNotFoundException("Trying to redirect a nonexistent CmdHandler object.");
         }
-        throw new CommandNotFoundException("Trying to trigger a non-bound command.");
     }
 }

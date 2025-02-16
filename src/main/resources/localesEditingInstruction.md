@@ -12,8 +12,28 @@
 例如说，一条消息说Hello world?\
 
 ```
-
+Hello World
 ```
 
+这就好啦！
+
+再来个难点的！\
+例如...你有个字符串想要插进去\
+比如说这个字符串是 Powered by DiGame\
+整个内容是 WasteUtils Powered by DiGame
+
+```
+WasteUtils [%s]
+```
+
+就好啦！
+
 不过就算有无尽的想法\
-也要排队哦
+也要排队哦(排队表在最后)
+
+| Line | Text                                                                    |
+|------|-------------------------------------------------------------------------|
+| 1    | No vault detected! Is vault installed correctly?                        |
+| 2    | Vault not found, skipping economy system.                               |
+| 3    | Di Anti-Cheat not found! The protection to the server will be disabled. |
+| 4    | We are strongly recommend to install Di-Anti Cheat.                     |
