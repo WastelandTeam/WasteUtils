@@ -1,4 +1,4 @@
-package org.wasteutils.WasteUtils.Comands;
+package org.wasteutils.WasteUtils.Commands;
 
 /*
 Commands manager

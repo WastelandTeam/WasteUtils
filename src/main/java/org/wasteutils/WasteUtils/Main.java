@@ -18,7 +18,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.wasteutils.WasteUtils.Comands.CommandManager;
+import org.wasteutils.WasteUtils.Commands.CommandManager;
 import org.wasteutils.WasteUtils.Listeners.LoggingListener;
 import org.wasteutils.WasteUtils.TabCompleter.WasteUtilsTabCompleter;
 
