@@ -1,8 +1,8 @@
 #调试模式
 debug: false
 message:
-  #选定在服务器内插件的输出展示什么语言
-  lang: zh-cn.yml
+  #选定在服务器内插件的输出展示什么语言(注意！文件必须以yml后缀出现)
+  lang: zh-cn
 plugin:
   matchmaking:
     rank:
