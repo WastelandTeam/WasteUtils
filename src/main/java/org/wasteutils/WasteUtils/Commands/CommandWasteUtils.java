@@ -12,6 +12,12 @@ import org.wasteutils.WasteUtils.Main;
 
 
 public class CommandWasteUtils {
+    private final Main plugin;
+
+    public CommandWasteUtils(Main plugin) {
+        this.plugin = plugin;
+    }
+
     public static Boolean CmdHandler(CommandSender sender, Command command, String s, String[] strings, Main plugin) {
         if (command.getName().equalsIgnoreCase("wasteutils") && strings.length > 0) {
             if (strings[0].equalsIgnoreCase("reload")) {
@@ -24,13 +30,14 @@ public class CommandWasteUtils {
                     return false;
                 } //reload cmd branch end
             } else if (strings[0].equalsIgnoreCase("version")) {
-                sender.sendMessage("Running Wasteutils 0.0.3");
+                sender.sendMessage(plugin.addPrefix("正在运行：WasteUtils v0.0.3"));
             } else {
                 sender.sendMessage(plugin.addPrefix(plugin.lang.getString("plugin.notfound")));
                 return false;
             }
         } else {
-            return false;
+            sender.sendMessage(plugin.addPrefix("§eWasteUtils §f- §a帮助页面 §e[1/1]"));
+            sender.sendMessage(plugin.addPrefix("/wasteutils reload - 重新加载插件"));
         }
         return false;
     }
