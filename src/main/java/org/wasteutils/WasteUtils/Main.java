@@ -28,8 +28,8 @@ import java.io.File;
 public class Main extends JavaPlugin {
     public FileConfiguration lang;
     private static Economy economy = null;
-    private static final Permission permissions = null;
-    private static final Chat chat = null;
+    private static Permission permissions = null;
+    private static Chat chat = null;
     public Boolean isVaultInstalled;
     public Boolean isDACInstalled;
     public static void main(String[] args) {
@@ -82,9 +82,7 @@ public class Main extends JavaPlugin {
         this.lang = YamlConfiguration.loadConfiguration(langFile);
     }
 
-    public String addPrefix(String message) {
-        return this.lang.getString("plugin.prefix") + message;
-    }
+    public String addPrefix(String message) {return this.lang.getString("plugin.prefix") + message;}
 
     @Override
     public void onEnable() {
@@ -93,16 +91,25 @@ public class Main extends JavaPlugin {
         this.loadConfigLang();
         if (!dependCheck("Vault")) {
             this.isVaultInstalled = Boolean.FALSE;
-            Bukkit.getConsoleSender().sendMessage(addPrefix("No vault detected! Is vault installed correctly?"));
-            Bukkit.getConsoleSender().sendMessage(addPrefix("Vault not found, skipping economy system."));
+            Bukkit.getConsoleSender().sendMessage("§3WasteUtils§f >>§e No vault detected! Is vault installed correctly?");
+            Bukkit.getConsoleSender().sendMessage("§3WasteUtils§f >>§e Vault not found, skipping economy system.");
+        } else {
+            chat=getChat();
+            economy=getEconomy();//load only when installed
+            permissions=getPermissions();
         }
         if (!dependCheck("DiAntiCheat")) {
             this.isDACInstalled = Boolean.FALSE;
             getLogger().severe("Di Anti-Cheat not found! The protection to the server will be disabled.");
             getLogger().warning("We are strongly recommend to install Di-Anti Cheat.");
         }
-        this.getCommand("wasteutils").setTabCompleter(new WasteUtilsTabCompleter());
-        this.getCommand("wasteutils").setExecutor(new CommandManager(this));
+        this.registerCommand("wasteutils");
+        this.registerCommand("matchmaking");
+    }
+
+    public void registerCommand(String commandName){
+        this.getCommand(commandName).setTabCompleter(new WasteUtilsTabCompleter());
+        this.getCommand(commandName).setExecutor(new CommandManager(this));
     }
 
     @Override

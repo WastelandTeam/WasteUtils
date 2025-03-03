@@ -29,9 +29,11 @@ public class CommandManager implements CommandExecutor {
             } else {
                 commandSender.sendMessage(this.plugin.addPrefix("Please install Vault before executing this main command!"));
                 return false;
-            }
+            } else if (command.getName().equalsIgnoreCase("matchmaking")) {
+                return CommandEconomies.CmdHandler(commandSender, command, s, strings, this.plugin);
         } else {
             throw new CommandNotFoundException("Trying to redirect a nonexistent CmdHandler object.");
         }
+        throw new CommandNotFoundException("Trying to trigger a non-bound command.");
     }
 }
