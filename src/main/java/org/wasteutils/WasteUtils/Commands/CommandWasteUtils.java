@@ -2,8 +2,6 @@ package org.wasteutils.WasteUtils.Commands;
 
 /* 感谢mao_mao_shen和xianyu_1145（他俩啥也没干，单纯想感谢）
 R.I.P for debug messages in 1738652268
-Douyin @X1a0D1
-Bilibili @xiaodi001
 */
 
 import org.bukkit.command.Command;
@@ -17,7 +15,6 @@ public class CommandWasteUtils {
     public CommandWasteUtils(Main plugin) {
         this.plugin = plugin;
     }
-
     public static Boolean CmdHandler(CommandSender sender, Command command, String s, String[] strings, Main plugin) {
         if (command.getName().equalsIgnoreCase("wasteutils") && strings.length > 0) {
             if (strings[0].equalsIgnoreCase("reload")) {
@@ -38,7 +35,6 @@ public class CommandWasteUtils {
         } else {
             sender.sendMessage(plugin.addPrefix("§eWasteUtils §f- §a帮助页面 §e[1/1]"));
             sender.sendMessage(plugin.addPrefix("/wasteutils reload - 重新加载插件"));
-        }
-        return false;
+          return true;
     }
 }

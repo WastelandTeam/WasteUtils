@@ -21,19 +21,19 @@ public class CommandManager implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-        int cmdType=0;
         if (command.getName().equalsIgnoreCase("wasteutils")) {
             return CommandWasteUtils.CmdHandler(commandSender, command, s, strings, this.plugin);
         } else if (command.getName().equalsIgnoreCase("economies")) {
             if (this.plugin.isVaultInstalled == Boolean.TRUE) {
                 return CommandEconomies.CmdHandler(commandSender, command, s, strings, this.plugin);
+            } else {
+                commandSender.sendMessage(this.plugin.addPrefix("Please install Vault before executing this main command!"));
+                return false;
             } else if (command.getName().equalsIgnoreCase("matchmaking")) {
                 return CommandEconomies.CmdHandler(commandSender, command, s, strings, this.plugin);
-            }
         } else {
             throw new CommandNotFoundException("Trying to redirect a nonexistent CmdHandler object.");
         }
         throw new CommandNotFoundException("Trying to trigger a non-bound command.");
     }
 }
-//return CommandWasteUtils.CmdHandler(commandSender, command, s, strings, this.plugin);

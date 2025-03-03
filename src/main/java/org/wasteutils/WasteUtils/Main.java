@@ -9,6 +9,7 @@ From commit-8883419:忘记注册了，嘿嘿，顺手的事
 
 
 //这里红了记得去右边的大象图标点刷新
+
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.permission.Permission;
@@ -17,9 +18,9 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.wasteutils.WasteUtils.Commands.CommandManager;
 import org.wasteutils.WasteUtils.Listeners.LoggingListener;
 import org.wasteutils.WasteUtils.TabCompleter.WasteUtilsTabCompleter;
-import org.wasteutils.WasteUtils.Commands.CommandManager;
 
 import java.io.File;
 
@@ -30,7 +31,7 @@ public class Main extends JavaPlugin {
     private static Permission permissions = null;
     private static Chat chat = null;
     public Boolean isVaultInstalled;
-
+    public Boolean isDACInstalled;
     public static void main(String[] args) {
     }
 
@@ -61,11 +62,13 @@ public class Main extends JavaPlugin {
         if (getServer().getPluginManager().getPlugin(pluginID) == null) {
             return false;
         }
-        RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
-        if (rsp == null) {
-            return false;
+        if (pluginID.equals("Vault")) {
+            RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
+            if (rsp == null) {
+                return false;
+            }
+            economy = rsp.getProvider();
         }
-        economy = rsp.getProvider();
         return true;
     }
 
@@ -94,6 +97,11 @@ public class Main extends JavaPlugin {
             chat=getChat();
             economy=getEconomy();//load only when installed
             permissions=getPermissions();
+        }
+        if (!dependCheck("DiAntiCheat")) {
+            this.isDACInstalled = Boolean.FALSE;
+            getLogger().severe("Di Anti-Cheat not found! The protection to the server will be disabled.");
+            getLogger().warning("We are strongly recommend to install Di-Anti Cheat.");
         }
         this.registerCommand("wasteutils");
         this.registerCommand("matchmaking");

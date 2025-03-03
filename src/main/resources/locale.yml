@@ -1,0 +1,4 @@
+depend.Vault.failed: No vault detected! Is vault installed correctly?
+depend.DAC.failed: Di Anti-Cheat not found! The protection to the server will be disabled.
+load.economy.skip: Vault not found, skipping economy system.
+warning.DACNotInstalled: We are strongly recommend to install Di-Anti Cheat.
