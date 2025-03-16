@@ -6,7 +6,16 @@ authors: [ xiaodi001,mao_mao_shen,xianyu1145 ]
 commands:
   test:
     description: to test that make sure WasteUtils is working
-    usage: "/test，对了 感谢mao_mao_shen和xianyu_1145（他俩啥也没干，单纯想感谢）"
+    usage: "应该是跑起来了"
   wasteutils:
     description: WasteUtils Admin setting
     aliases: [ wu, waste ]
+  matchmaking:
+    description: Matchmaking components of WasteUtils
+    aliases: [ mm, match ]
+  economies:
+    description: Wasteutils Economies module
+    aliases: [ wueco, eco ]
+  uid:
+    description: view my uid
+    aliases: [ id ]

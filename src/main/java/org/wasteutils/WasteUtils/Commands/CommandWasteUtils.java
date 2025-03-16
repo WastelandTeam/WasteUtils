@@ -28,6 +28,7 @@ public class CommandWasteUtils {
                 } //reload cmd branch end
             } else if (strings[0].equalsIgnoreCase("version")) {
                 sender.sendMessage(plugin.addPrefix("正在运行：WasteUtils v0.0.3"));
+                return true;
             } else {
                 sender.sendMessage(plugin.addPrefix(plugin.lang.getString("plugin.notfound")));
                 return false;
@@ -36,5 +37,6 @@ public class CommandWasteUtils {
             sender.sendMessage(plugin.addPrefix("§eWasteUtils §f- §a帮助页面 §e[1/1]"));
             sender.sendMessage(plugin.addPrefix("/wasteutils reload - 重新加载插件"));
           return true;
+        }
     }
 }

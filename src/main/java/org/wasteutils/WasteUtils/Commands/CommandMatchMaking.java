@@ -19,13 +19,17 @@ public class CommandMatchMaking {
             } else if (strings[0].equalsIgnoreCase("version")) {
                 sender.sendMessage("WasteUtils Matchmaking module 0.0.1");//version branch end
             } else if (strings[0].equalsIgnoreCase("start")) {
-
+                sender.sendMessage(sender.getName());
+                if (sender.getName() == "CONSOLE") {
+                    sender.sendMessage(plugin.addPrefix(plugin.lang.getString("plugin.isconsole")));
+                }
             } else {
-                sender.sendMessage(plugin.addPrefix(plugin.lang.getString("matchmaking.notfound")));
+                sender.sendMessage(plugin.addPrefix(plugin.lang.getString("plugin.notfound")));
                 return false;//nf end
             }
         } else {
             sender.sendMessage("Matchmaking without subcommand");//main command end
+            return true;
         }
         return false;//impossible, because it needs to be <0.
     }

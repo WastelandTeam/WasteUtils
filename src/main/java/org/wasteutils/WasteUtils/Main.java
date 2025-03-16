@@ -20,6 +20,8 @@ import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.wasteutils.WasteUtils.Commands.CommandManager;
 import org.wasteutils.WasteUtils.Listeners.LoggingListener;
+import org.wasteutils.WasteUtils.Listeners.PlayerListener;
+import org.wasteutils.WasteUtils.TabCompleter.MatchmakingTabCompleter;
 import org.wasteutils.WasteUtils.TabCompleter.WasteUtilsTabCompleter;
 
 import java.io.File;
@@ -86,8 +88,10 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
+
         Bukkit.getConsoleSender().sendMessage("§3WasteUtils§f >>§e Plugin was Enabled.");
         getServer().getPluginManager().registerEvents(new LoggingListener(this), this);
+        getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
         this.loadConfigLang();
         if (!dependCheck("Vault")) {
             this.isVaultInstalled = Boolean.FALSE;
@@ -100,17 +104,18 @@ public class Main extends JavaPlugin {
         }
         if (!dependCheck("DiAntiCheat")) {
             this.isDACInstalled = Boolean.FALSE;
-            getLogger().severe("Di Anti-Cheat not found! The protection to the server will be disabled.");
-            getLogger().warning("We are strongly recommend to install Di-Anti Cheat.");
+            getLogger().severe("Di 反作弊 未找到。对服务器的保护将禁用。");
+            getLogger().warning("我们非常建议你安装 Di 反作弊。");
         }
-        this.registerCommand("wasteutils");
-        this.registerCommand("matchmaking");
+        getCommand("wasteutils").setExecutor(new CommandManager(this));
+        getCommand("matchmaking").setExecutor(new CommandManager(this));
+        getCommand("wasteutils").setTabCompleter(new WasteUtilsTabCompleter());
+        getCommand("matchmaking").setTabCompleter(new MatchmakingTabCompleter());
+        getCommand("economies").setExecutor(new CommandManager(this));
+        getCommand("uid").setExecutor(new CommandManager(this));
+        SQLiteAPI.connectDb(this);
     }
 
-    public void registerCommand(String commandName){
-        this.getCommand(commandName).setTabCompleter(new WasteUtilsTabCompleter());
-        this.getCommand(commandName).setExecutor(new CommandManager(this));
-    }
 
     @Override
     public void onDisable() {
@@ -118,7 +123,7 @@ public class Main extends JavaPlugin {
     }
 
     public void onSevereError(String stopReason) {
-        getLogger().severe(String.format("Severe Error! - [%s] - WasteUtils Powered by DiGame", stopReason));
+        getLogger().severe(String.format("Severe Error! - %s - WasteUtils Powered by DiGame", stopReason));
         getServer().getPluginManager().disablePlugin(this);
     }
 

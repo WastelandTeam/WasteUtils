@@ -6,8 +6,9 @@ import org.bukkit.command.TabCompleter;
 
 import java.util.List;
 
-public class WasteUtilsTabCompleter implements TabCompleter {
-    private static final String[] subcommands = {"reload", "version"};
+public class MatchmakingTabCompleter implements TabCompleter {
+    private static final String[] subcommands = {"view", "version"};
+
     @Override
     public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings) {
         return List.of(subcommands);
