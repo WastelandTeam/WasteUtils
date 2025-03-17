@@ -1,14 +1,5 @@
 package org.wasteutils.WasteUtils;
 
-/*
-Authors: xiaodi001, mao_mao_shen
-Github: xiaodi001-01
-From xiaodi001-01:全体玩家们好，我们还在蒸
-From commit-8883419:忘记注册了，嘿嘿，顺手的事
-*/
-
-
-//这里红了记得去右边的大象图标点刷新
 
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.economy.Economy;
@@ -27,7 +18,6 @@ import org.wasteutils.WasteUtils.TabCompleter.WasteUtilsTabCompleter;
 
 import java.io.File;
 
-
 public class Main extends JavaPlugin {
     public FileConfiguration lang;
     private static Economy economy = null;
@@ -35,6 +25,7 @@ public class Main extends JavaPlugin {
     private static Chat chat = null;
     public Boolean isVaultInstalled;
     public Boolean isDACInstalled;
+
     public static void main(String[] args) {
     }
 
@@ -54,11 +45,38 @@ public class Main extends JavaPlugin {
     public void onLoad() {
         this.saveDefaultConfig();
         this.reloadConfig();
-        Bukkit.getConsoleSender().sendMessage("§3WasteUtils§f >>§e Plugin was loaded. Hello from WasteUtils V0.0.1 Demo!");
+        Bukkit.getConsoleSender().sendMessage("§3WasteUtils§f >>§e Plugin was loaded.");
         boolean isDebugging = this.getConfig().getBoolean("debug");
         if (isDebugging == Boolean.TRUE) {
             Bukkit.getConsoleSender().sendMessage("§3WasteUtils§f >>§e Debugger was enabled.(Idk why to do this)");
         }
+    }
+
+    public void onEnable() {
+        Bukkit.getConsoleSender().sendMessage("§3WasteUtils§f >>§e Plugin was Enabled.");
+        getServer().getPluginManager().registerEvents(new LoggingListener(this), this);
+        getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
+        this.loadConfigLang();
+        if (!dependCheck("Vault")) {
+            this.isVaultInstalled = Boolean.FALSE;
+            Bukkit.getConsoleSender().sendMessage("§3WasteUtils§f >>§e No vault detected! Is vault installed correctly?");
+            Bukkit.getConsoleSender().sendMessage("§3WasteUtils§f >>§e Vault not found, skipping economy system.");
+        } else {
+            chat = getChat();
+            economy = getEconomy();//load only when installed
+            permissions = getPermissions();
+        }
+        if (!dependCheck("DiAntiCheat")) {
+            this.isDACInstalled = Boolean.FALSE;
+            getLogger().severe("Di 反作弊 未找到。对服务器的保护将禁用。");
+            getLogger().warning("我们非常建议你安装 Di 反作弊。");
+        }
+        this.registerCommand();
+        SQLiteAPI.connectDb(this);
+    }
+
+    public void onDisable() {
+        Bukkit.getConsoleSender().sendMessage("§3WasteUtils§f >>§e Plugin was Disabled.");
     }
 
     private boolean dependCheck(String pluginID) {
@@ -87,27 +105,7 @@ public class Main extends JavaPlugin {
 
     public String addPrefix(String message) {return this.lang.getString("plugin.prefix") + message;}
 
-    @Override
-    public void onEnable() {
-
-        Bukkit.getConsoleSender().sendMessage("§3WasteUtils§f >>§e Plugin was Enabled.");
-        getServer().getPluginManager().registerEvents(new LoggingListener(this), this);
-        getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
-        this.loadConfigLang();
-        if (!dependCheck("Vault")) {
-            this.isVaultInstalled = Boolean.FALSE;
-            Bukkit.getConsoleSender().sendMessage("§3WasteUtils§f >>§e No vault detected! Is vault installed correctly?");
-            Bukkit.getConsoleSender().sendMessage("§3WasteUtils§f >>§e Vault not found, skipping economy system.");
-        } else {
-            chat=getChat();
-            economy=getEconomy();//load only when installed
-            permissions=getPermissions();
-        }
-        if (!dependCheck("DiAntiCheat")) {
-            this.isDACInstalled = Boolean.FALSE;
-            getLogger().severe("Di 反作弊 未找到。对服务器的保护将禁用。");
-            getLogger().warning("我们非常建议你安装 Di 反作弊。");
-        }
+    public void registerCommand() {
         getCommand("wasteutils").setExecutor(new CommandManager(this));
         getCommand("matchmaking").setExecutor(new CommandManager(this));
         getCommand("wasteutils").setTabCompleter(new WasteUtilsTabCompleter());
@@ -116,18 +114,10 @@ public class Main extends JavaPlugin {
         getCommand("uid").setExecutor(new CommandManager(this));
         getCommand("pd").setExecutor(new CommandManager(this));
         getCommand("pd").setTabCompleter(new PDTabCompleter());
-        SQLiteAPI.connectDb(this);
-    }
-
-
-    @Override
-    public void onDisable() {
-        Bukkit.getConsoleSender().sendMessage("§3WasteUtils§f >>§e Plugin was Disabled.");
     }
 
     public void onSevereError(String stopReason) {
         getLogger().severe(String.format("Severe Error! - %s - WasteUtils Powered by DiGame", stopReason));
         getServer().getPluginManager().disablePlugin(this);
     }
-
 }
