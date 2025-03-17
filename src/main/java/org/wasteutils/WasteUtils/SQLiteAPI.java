@@ -23,6 +23,13 @@ public class SQLiteAPI {
             \tmails TEXT DEFAULT ('{"security":[],"notification":[],"system":[]}')
             );
             """;
+    private static final String constructSocial = """
+            CREATE TABLE IF NOT EXISIS social (
+            \tuid INTEGER,
+            \ttitles TEXT DEFAULT ([{"name":"玩家","expireTime":"never"}]),
+            \tskins TEXT DEFAULT ([{"id":"0","expire":"never"}])
+            );
+            """;
     private final Main plugin;
     public static Statement statement = null;
     public static Connection db = null;
@@ -56,6 +63,7 @@ public class SQLiteAPI {
                 updateDb(constructUID);
                 updateDb(constructPoints);
                 updateDb(constructMail);
+                updateDb(constructSocial);
             } else {
                 plugin.onSevereError("Cannot connect database!");
             }

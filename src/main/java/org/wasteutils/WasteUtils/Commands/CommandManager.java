@@ -1,9 +1,7 @@
 package org.wasteutils.WasteUtils.Commands;
 
 /*
-Commands manager
-If executed, it will be filter in here.
-
+Command manager
 */
 
 import org.bukkit.command.Command;
@@ -58,6 +56,15 @@ public class CommandManager implements CommandExecutor {
             } else {
                 commandSender.sendMessage(plugin.addPrefix(plugin.lang.getString("plugin.isconsole")));
             }
+        } else if (command.getName().equalsIgnoreCase("pd")) {
+            if (strings.length == 0 || strings[0].equalsIgnoreCase("official")) {
+                commandSender.sendMessage(this.plugin.addPrefix("点击链接加入腾讯频道【废土逃生】：https://pd.qq.com/s/hdroe3oq0"));
+                return true;
+            } else if (strings[0].equalsIgnoreCase("cat")) {
+                commandSender.sendMessage(this.plugin.addPrefix("点击链接加入腾讯频道【废土逃生-猫猫社群】：https://pd.qq.com/s/9ju3p70zm"));
+                return true;
+            }//add new main command here.
+        return false;
         } else {
             throw new CommandNotFoundException("Trying to redirect a nonexistent CmdHandler object.");
         }

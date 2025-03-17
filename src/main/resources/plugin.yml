@@ -19,3 +19,5 @@ commands:
   uid:
     description: view my uid
     aliases: [ id ]
+  pd:
+    description: View and join the community

@@ -22,6 +22,7 @@ import org.wasteutils.WasteUtils.Commands.CommandManager;
 import org.wasteutils.WasteUtils.Listeners.LoggingListener;
 import org.wasteutils.WasteUtils.Listeners.PlayerListener;
 import org.wasteutils.WasteUtils.TabCompleter.MatchmakingTabCompleter;
+import org.wasteutils.WasteUtils.TabCompleter.PDTabCompleter;
 import org.wasteutils.WasteUtils.TabCompleter.WasteUtilsTabCompleter;
 
 import java.io.File;
@@ -113,6 +114,8 @@ public class Main extends JavaPlugin {
         getCommand("matchmaking").setTabCompleter(new MatchmakingTabCompleter());
         getCommand("economies").setExecutor(new CommandManager(this));
         getCommand("uid").setExecutor(new CommandManager(this));
+        getCommand("pd").setExecutor(new CommandManager(this));
+        getCommand("pd").setTabCompleter(new PDTabCompleter());
         SQLiteAPI.connectDb(this);
     }
 
