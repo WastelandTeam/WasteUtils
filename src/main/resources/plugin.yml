@@ -1,6 +1,6 @@
 name: WasteUtils
 main: org.wasteutils.WasteUtils.Main
-version: 0.0.1 Demo
+version: 0.0.5
 api-version: 1.20
 authors: [ xiaodi001,mao_mao_shen,xianyu1145 ]
 commands:
